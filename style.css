@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+body {
+  font-family: Inter;
+  /*   background: gray; */
+  color: white;
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  font-variation-settings: "slnt" 0;
+  font-optical-sizing: none;
+  line-height: initial;
+}
+
+.container {
+  max-width: 743px;
+  padding: 20px;
+  margin: auto;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: #3579f5;
+}
+
+.card-progress {
+  position: relative;
+  margin-left: 4px;
+  width: 60px;
+  height: 60px;
+}
+
+.progress-circle {
+  position: absolute; /* Exclude from layout calculations so that the label text is not pushed out */
+
+  --progress: 3;
+  --size: 60px;
+  --stroke-width-bg: 1px;
+  --stroke-width-fg: 2px;
+
+  --center: calc(var(--size) / 2);
+  --stroke-diff: calc(var(--stroke-width-fg) - var(--stroke-width-bg));
+  --radius-bg: calc((var(--size) - var(--stroke-width-bg) - var(--stroke-diff)) / 2);
+  --radius-fg: calc((var(--size) - var(--stroke-width-fg)) / 2);
+
+  width: var(--size);
+  height: var(--size);
+}
+
+.progress-circle circle {
+  cx: var(--center);
+  cy: var(--center);
+  fill: none;
+  stroke-linecap: round;
+}
+
+.progress-circle circle.bg {
+  r: var(--radius-bg);
+  stroke: #fffa;
+  stroke-width: var(--stroke-width-bg);
+}
+
+.progress-circle circle.fg {
+  --circumference: calc(var(--radius-fg) * pi * 2);
+  --dash: calc((var(--progress) * var(--circumference)) / 100);
+
+  r: var(--radius-fg);
+  stroke-width: var(--stroke-width-fg);
+  transform: rotate(-90deg);
+  transform-origin: var(--center) var(--center);
+  stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
+  stroke: white;
+}
+
+.progress-label {
+  height: 60px;
+  width: 60px;
+  font-size: 20px;
+  font-weight: 400;
+  vertical-align: middle;
+  line-height: 60px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 1px 13px;
+  border-radius: 40px;
+  background: #2364db;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 15px;
+  color: #ffffff;
+  margin: 0 0 3px 0;
+}
+
+button {
+  text-wrap: nowrap;
+  background: #f4f8ff;
+  height: 40px;
+  padding: 11px 26px 11px 25px;
+  border: none;
+  border-radius: 6px;
+  color: #4777ed;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.card-content {
+  flex: 1;
+  padding: 2px 0 0 16px;
+  line-height: 8px;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.card-description {
+  font-size: 12px;
+  line-height: 25px;
+  font-weight: 400;
+}
